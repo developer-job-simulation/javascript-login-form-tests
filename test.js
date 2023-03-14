@@ -11,6 +11,7 @@ test("Fix Logo Rendering Issue", async () => {
     resources: "usable",
   });
   let imgSrc = path.parse(dom.window.document.querySelector("img").src);
+  console.log(imgSrc);
   assert.not(imgSrc.dir === "file://");
   assert.ok(imgSrc.base === "logo.svg");
 });
