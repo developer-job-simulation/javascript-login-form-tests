@@ -40,6 +40,9 @@ jobs:
         with:
           repository: developer-job-simulation/javascript-login-form-tests
           path: tests
+      - run: ls
+      - run: ls ..
+      - run: ls tests
       - name: npm install
         run: cd tests && npm i
       - name: Run Tests
