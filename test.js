@@ -3,7 +3,7 @@ import path from "node:path";
 import { setTimeout } from "timers/promises";
 import { test } from "uvu";
 import * as assert from "uvu/assert";
-let filePath = "./src/index.html";
+let filePath = "../src/index.html";
 
 test("Fix Logo Rendering Issue", async () => {
   const dom = await JSDOM.fromFile(filePath, {
