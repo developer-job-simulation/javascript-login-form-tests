@@ -73,7 +73,9 @@ test("Validate User Credentials & show validation status message (Bad Auth)", as
 
   await setTimeout(10); // need to let css load
 
-  // simulate valid login
+  // simulate invalid login
+  dom.window.document.getElementById("email").value = "notarealuser@world.com";
+  dom.window.document.getElementById("password").value = "notarealpassword";
   dom.window.document.querySelector("button").dispatchEvent(new dom.window.MouseEvent("click"));
 
   assert.is(dom.window.document.getElementById("success-message").hidden, true);
