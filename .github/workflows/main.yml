@@ -27,13 +27,15 @@ jobs:
     steps:
       - name: Set up environment variables
         env:
-          USER_ID: ${{ github.actor }}
+          USER_ID: ${{ github.event.sender.id }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           echo "USER_ID=${USER_ID}" >> $GITHUB_ENV
           echo "GH_TOKEN=${GH_TOKEN}" >> $GITHUB_ENV
       - uses: actions/checkout@v3
       - name: Call API endpoint
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: ${{ matrix.status == 200 }}
         run: |
           status_code=$(curl -s -o /dev/null -w "%{http_code}" -X POST -d "${USER_ID}" https://jobsim-pr-user-check.deno.dev)
